@@ -1,0 +1,35 @@
+{
+  "name": "api-mentor-rafael",
+  "version": "1.0.0",
+  "description": "API para geração de PDF com Puppeteer e Handlebars",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "pdf",
+    "puppeteer",
+    "handlebars",
+    "node",
+    "api"
+  ],
+  "author": "Thiago",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "17.4.2",
+    "express": "4.19.2",
+    "handlebars": "4.7.8",
+    "nodemailer": "8.0.5",
+    "pg": "8.20.0",
+    "puppeteer": "23.0.0"
+  },
+  "devDependencies": {
+    "eslint": "9.0.0",
+    "nodemon": "3.1.14",
+    "prettier": "3.2.5"
+  }
+}

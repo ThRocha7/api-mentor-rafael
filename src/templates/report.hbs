@@ -1,0 +1,154 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        padding: 0;
+        margin: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .title {
+        font-size: 42px;
+        font-weight: bold;
+      }
+
+      .title span {
+        color: #c8a75a;
+      }
+
+      .divider {
+        width: 100px;
+        height: 2px;
+        background: #c8a75a;
+        margin: 20px auto;
+      }
+
+      .client-info {
+        text-align: left;
+        margin-bottom: 30px;
+        background: #142f57;
+        padding: 20px;
+        border-radius: 8px;
+        color: #ffffff;
+      }
+
+      .client-info p {
+        margin: 5px 0;
+      }
+
+      /* CATEGORY BLOCK */
+      .category-block {
+        text-align: left;
+        margin-top: 30px;
+
+        /* evita quebra dentro do bloco */
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* WRAPPER INTERNO (SOLUÇÃO DO PROBLEMA) */
+      .category-content {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .category-title {
+        background: #142f57;
+        color: #ffffff;
+        padding: 12px;
+        border-radius: 6px;
+        font-weight: bold;
+        margin-bottom: 10px;
+
+        /* evita ficar sozinho no fim da página */
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      .question-item {
+        background: #c4c1c1;
+        padding: 20px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .question-text {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .answer-text {
+        color: #000000;
+        padding-top: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- HEADER -->
+      <div class="title">
+        Raio-X
+        <span>Empresarial</span>
+      </div>
+
+      <div class="subtitle">
+        DIAGNÓSTICO EMPRESARIAL
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- CLIENT INFO -->
+      <div class="client-info">
+        <p><strong>Nome:</strong> {{name}}</p>
+        <p><strong>Empresa:</strong> {{company_name}}</p>
+        <p><strong>Cargo:</strong> {{company_role}}</p>
+        <p><strong>Telefone:</strong> {{phone_number}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+      </div>
+
+      <div class="client-info">
+        <p><strong>Resultado:</strong> {{result_label}}</p>
+        <p><strong>Descrição:</strong> {{result_description}}</p>
+      </div>
+
+      <!-- QUESTIONS -->
+      {{#each questions}}
+
+        <div class="category-block">
+
+          <div class="category-content">
+            {{#if (isNewCategory @index ../questions)}}
+              <div class="category-title">
+                {{category}}
+              </div>
+           {{/if}}
+            <div class="question-item">
+              <div class="question-text">{{text}}</div>
+              <div class="answer-text">R. {{answer}}</div>
+            </div>
+
+          </div>
+
+        </div>
+
+      {{/each}}
+
+    </div>
+  </body>
+</html>
