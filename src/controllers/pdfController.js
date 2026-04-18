@@ -9,7 +9,7 @@ export async function generatePdf(req, res) {
     const data = await getReportData(id);
 
     if (!data) {
-      return res.status(404).json({ error: "Dados não encontrados" });
+      return res.status(404).json({ error: "No records found" });
     }
 
     const pdfBuffer = await createPdf(data);

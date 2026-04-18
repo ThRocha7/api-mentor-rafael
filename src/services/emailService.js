@@ -1,7 +1,9 @@
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -13,6 +15,7 @@ export async function sendEmail(pdfBuffer, data) {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: data.email,
+      cc: process.env.EMAIL_COPY,
       subject: "Resultado Diagnóstico Empresarial",
       text: `Olá, ${data.name}!
       
